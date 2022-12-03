@@ -105,4 +105,36 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
+	
+	// editar contato
+	public void alterarContato(JavaBeans contato) {
+		String create = "update contatos set nome = ?, fone = ?, email = ? where id = ?";
+		
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(create);
+			pst.setString(1, contato.getNome());
+			pst.setString(2, contato.getFone());
+			pst.setString(3, contato.getEmail());
+			pst.setInt(4, contato.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public void deletarContato(JavaBeans contato) {
+		String delete = "delete from contatos where id = ?";
+		
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(delete);
+			pst.setInt(1, contato.getId());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }

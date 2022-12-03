@@ -25,6 +25,17 @@ h1 {
 	cursor: pointer;
 }
 
+.Botao2 {
+	text-decoration: none;
+	background-color: #d51213;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	/*aumento em 20% no tamanho da fonte*/
+	font-size: 1.2em;
+	font-weight: 700;
+	border-radius: 5px;
+}
+
 .Caixa1 {
 	width: 320px;
 	padding: 5px;
@@ -38,6 +49,12 @@ h1 {
 	margin-bottom: 10px;
 	border: 1px solid #66bbff;
 	border-radius: 5px; 
+}
+
+#caixa3 {
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #ff0000;
 }
 
 #tabela {
