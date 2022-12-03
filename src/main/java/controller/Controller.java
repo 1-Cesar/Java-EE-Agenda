@@ -144,36 +144,36 @@ public class Controller extends HttpServlet {
 
 		response.sendRedirect("main");
 	}
-	
+
 	// gerar relatório em PDF
 	protected void gerarRelatorio(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Document documento = new Document();
-		
+
 		try {
-			//tipo de conteúdo
+			// tipo de conteúdo
 			response.setContentType("application/pdf");
-			//nome do documento
+			// nome do documento
 			response.addHeader("Content-Disposition", "inline; filename=" + "contatos.pdf");
-			//criar o documento
+			// criar o documento
 			PdfWriter.getInstance(documento, response.getOutputStream());
-			//abrir o documento -> conteúdo
+			// abrir o documento -> conteúdo
 			documento.open();
 			documento.add(new Paragraph("Lista de contatos:"));
 			documento.add(new Paragraph(" "));
-			//criar uma tabela
+			// criar uma tabela
 			PdfPTable tabela = new PdfPTable(3);
-			//cabeçalho
+			// cabeçalho
 			PdfPCell col1 = new PdfPCell(new Paragraph("Nome"));
 			PdfPCell col2 = new PdfPCell(new Paragraph("Fone"));
 			PdfPCell col3 = new PdfPCell(new Paragraph("E-Mail"));
 			tabela.addCell(col1);
 			tabela.addCell(col2);
 			tabela.addCell(col3);
-			//popular a tabela com os contatos
+			// popular a tabela com os contatos
 			ArrayList<JavaBeans> lista = dao.listarContatos();
 			for (int i = 0; i < lista.size(); i++) {
-				tabela.addCell(lista.get(i).getNome());				
+				tabela.addCell(lista.get(i).getNome());
 				tabela.addCell(lista.get(i).getFone());
 				tabela.addCell(lista.get(i).getEmail());
 			}
@@ -185,4 +185,3 @@ public class Controller extends HttpServlet {
 		}
 	}
 }
-	

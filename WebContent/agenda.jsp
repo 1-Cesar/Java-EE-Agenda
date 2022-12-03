@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%
 ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contatos");
-%> 
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,16 +28,22 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contat
 			</tr>
 		</thead>
 		<tbody>
-			<% for (int i = 0; i < lista.size(); i++) { %>
-				<tr>
-					<td><%= lista.get(i).getId() %></td>
-					<td><%= lista.get(i).getNome() %></td>
-					<td><%= lista.get(i).getFone() %></td>
-					<td><%= lista.get(i).getEmail() %></td>
-					<td><a href="select?id=<%= lista.get(i).getId() %>" class="Botao1">Editar</a>
-					<a href="javascript: confirmar(<%= lista.get(i).getId() %>)" class="Botao2">Excluir</a></td>
-				</tr>
-			<% } %>
+			<%
+			for (int i = 0; i < lista.size(); i++) {
+			%>
+			<tr>
+				<td><%=lista.get(i).getId()%></td>
+				<td><%=lista.get(i).getNome()%></td>
+				<td><%=lista.get(i).getFone()%></td>
+				<td><%=lista.get(i).getEmail()%></td>
+				<td><a href="select?id=<%=lista.get(i).getId()%>"
+					class="Botao1">Editar</a> <a
+					href="javascript: confirmar(<%=lista.get(i).getId()%>)"
+					class="Botao2">Excluir</a></td>
+			</tr>
+			<%
+			}
+			%>
 		</tbody>
 	</table>
 	<script src="scripts/confirmador.js"></script>
